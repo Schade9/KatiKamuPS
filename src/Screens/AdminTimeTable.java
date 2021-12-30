@@ -42,7 +42,7 @@ public class AdminTimeTable extends JFrame {
 	private JComboBox lsn3box;
 	private JComboBox lsn4box;
 	private JButton saveBtn;
-	private static String displayClass;
+	private static String displayClass = "P1";
 	String first_lesson ="--" , second_lesson ="--", third_lesson = "--",fourth_lesson = "--";
 	String search_class;
 	
@@ -52,6 +52,7 @@ public class AdminTimeTable extends JFrame {
 	private JComboBox comboBox;
 	private JLabel classHeader;
 	private JButton logOutBtn;
+	private JLabel lblNewLabel_2;
 	private void tableClicked(MouseEvent evt){	
 		day = resultTable.getValueAt(resultTable.getSelectedRow(), 0).toString();
 		lesson1 = resultTable.getValueAt(resultTable.getSelectedRow(), 1).toString();
@@ -225,11 +226,11 @@ public class AdminTimeTable extends JFrame {
 			}
 		});
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"P1", "P2", "P3", "P4", "P5", "P6", "P7"}));
-		comboBox.setBounds(33, 0, 77, 27);
+		comboBox.setBounds(403, 0, 77, 27);
 		contentPane.add(comboBox);
 		
 		classHeader = new JLabel(AdminTimeTable.displayClass+" TIMETABLE");
-		classHeader.setBounds(160, 4, 145, 16);
+		classHeader.setBounds(71, 4, 145, 16);
 		contentPane.add(classHeader);
 		
 		logOutBtn = new JButton("Log out");
@@ -242,6 +243,10 @@ public class AdminTimeTable extends JFrame {
 		});
 		logOutBtn.setBounds(427, 204, 117, 29);
 		contentPane.add(logOutBtn);
+		
+		lblNewLabel_2 = new JLabel("SELECT CLASS:");
+		lblNewLabel_2.setBounds(282, 4, 109, 16);
+		contentPane.add(lblNewLabel_2);
 	}
 	
 
