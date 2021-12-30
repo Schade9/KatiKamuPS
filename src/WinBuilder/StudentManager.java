@@ -324,6 +324,25 @@ public class StudentManager implements School, Marks, Search{
 
 	}
 	
+	public void updateStudents(String fname, String lname, String regno, String student_class, String age, String old_regno) throws Exception{
+		Connection con = db.getConnection();
+		 
+		String query = "UPDATE students SET first_name = ?, last_name = ?, registration_num = ?, current_class = ?, age = ? WHERE registration_num = ?";
+
+		PreparedStatement pmt = con.prepareStatement(query);
+		pmt.setString(1, fname);
+		pmt.setString(2, lname); 
+		pmt.setString(3, regno);
+		pmt.setString(4, student_class);
+		pmt.setString(5, age);
+		pmt.setString(6, old_regno);
+		pmt.execute();
+		String query2 = "UPDATE marks SET student_name = '"+fname+" "+lname+"',class = '"+student_class+"' WHERE registration_num = '"+old_regno+"'";
+		System.out.println(query2);
+		Statement smt = con.createStatement();
+		smt.execute(query2);
+	}
+	
 	//Return a table of students which takes filters of registration number, class and gender or return a table without filters
 	public DefaultTableModel getRegTable(String regno, String student_class, String student_gender) throws Exception{
 		Connection con = db.getConnection();
